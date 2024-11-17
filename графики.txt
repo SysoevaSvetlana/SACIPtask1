@@ -1,0 +1,42 @@
+XYSeries series = new XYSeries("Array Compression");
+
+Создается новый объект XYSeries с названием "Array Compression". Этот объект будет использоваться для хранения данных для построения графика.
+for (int i = 0; i < inputSizes.length; i++) { series.add(inputSizes[i], durations.get(i)); }
+
+Этот цикл проходит по массиву inputSizes и списку durations.
+Для каждого элемента inputSizes[i] и соответствующего ему значения durations.get(i) добавляется новая точка в series.
+XYSeriesCollection dataset = new XYSeriesCollection();
+
+Создается новый объект XYSeriesCollection, который будет хранить все наборы данных (в данном случае, только один набор - series).
+dataset.addSeries(series);
+
+Добавляется series в dataset.
+JFreeChart chart = ChartFactory.createXYLineChart(...);
+
+Создается новый объект JFreeChart с помощью статического метода ChartFactory.createXYLineChart().
+Этот метод принимает следующие параметры:
+Заголовок графика: "Array Compression Performance"
+Название оси X: "Input Size"
+Название оси Y: "Time (ns)"
+dataset - набор данных, который будет использован для построения графика
+Ориентация графика: вертикальная
+Флаги для настройки отображения легенды, подсказок и URL-ссылок.
+ChartPanel chartPanel = new ChartPanel(chart);
+
+Создается новый объект ChartPanel, который инкапсулирует JFreeChart и предоставляет графический интерфейс для его отображения.
+JFrame frame = new JFrame("Array Compression Performance");
+
+Создается новое окно JFrame с заголовком "Array Compression Performance".
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+Устанавливается операция, выполняемая при закрытии окна: выход из приложения.
+frame.getContentPane().add(chartPanel);
+
+Добавляется chartPanel в содержимое окна frame.
+frame.pack();
+
+Устанавливаются оптимальные размеры окна frame на основе его содержимого.
+frame.setVisible(true);
+
+Делает окно frame видимым.
+В целом, этот код создает и отображает график, показывающий производительность сжатия массива в зависимости от размера входных данных.
